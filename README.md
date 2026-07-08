@@ -48,7 +48,7 @@ O portfólio é totalmente responsivo e funciona perfeitamente em:
 ## 📞 Links Úteis
 
 - [GitHub](https://github.com/DeividFigueiredo)
-- [LinkedIn](#)
+- [LinkedIn](deivid-borges)
 - Email: seu-email@exemplo.com
 
 ## ✨ Features
