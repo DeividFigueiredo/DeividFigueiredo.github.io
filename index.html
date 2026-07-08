@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deivid Figueiredo | Desenvolvedor Full Stack</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background animado -->
+    <div class="background-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">D</span>
+                <span class="logo-text">Deivid<span class="logo-accent">.dev</span></span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-nav>Home</a></li>
+                <li><a href="#sobre" data-nav>Sobre</a></li>
+                <li><a href="#projetos" data-nav>Projetos</a></li>
+                <li><a href="#skills" data-nav>Skills</a></li>
+                <li><a href="#contato" data-nav>Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">Olá, sou Deivid!</span>
+                    </h1>
+                    <p class="hero-subtitle">Desenvolvedor Full Stack | Designer | Criador de Experiências</p>
+                    <p class="hero-description">
+                        Transformo ideias em soluções digitais inovadoras. Apaixonado por clean code, design moderno e experiência do usuário.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contato" class="btn btn-primary">
+                            <span>Vamos Conversar</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#projetos" class="btn btn-secondary">
+                            <span>Ver Meus Trabalhos</span>
+                            <i class="fas fa-code"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="avatar-container">
+                        <div class="avatar">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sobre Mim</h2>
+                <p class="section-subtitle">Conheça minha história e o que me motiva</p>
+            </div>
+            <div class="sobre-content">
+                <div class="sobre-card">
+                    <div class="sobre-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Inovação</h3>
+                    <p>Busco sempre encontrar soluções criativas e eficientes para resolver problemas reais.</p>
+                </div>
+                <div class="sobre-card">
+                    <div class="sobre-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Aprendizado</h3>
+                    <p>Estou em constante evolução, aprendendo novas tecnologias e melhores práticas.</p>
+                </div>
+                <div class="sobre-card">
+                    <div class="sobre-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Colaboração</h3>
+                    <p>Acredito no poder do trabalho em equipe e na troca de experiências.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tecnologias & Skills</h2>
+                <p class="section-subtitle">Ferramentas que domino</p>
+            </div>
+            
+            <div class="skills-wrapper">
+                <div class="skill-category">
+                    <h3 class="category-title">Frontend</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h4>HTML5</h4>
+                            <span class="skill-level">Avançado</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <h4>CSS3</h4>
+                            <span class="skill-level">Avançado</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <h4>JavaScript</h4>
+                            <span class="skill-level">Avançado</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <h4>React</h4>
+                            <span class="skill-level">Intermediário</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">Backend & Ferramentas</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h4>Python</h4>
+                            <span class="skill-level">Intermediário</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <h4>Node.js</h4>
+                            <span class="skill-level">Intermediário</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <h4>Git</h4>
+                            <span class="skill-level">Avançado</span>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>Databases</h4>
+                            <span class="skill-level">Intermediário</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos" class="projetos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Meus Projetos</h2>
+                <p class="section-subtitle">Trabalhos que estou orgulhoso</p>
+            </div>
+            <div class="projetos-grid">
+                <div class="projeto-card">
+                    <div class="projeto-image">
+                        <div class="projeto-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                    <div class="projeto-content">
+                        <h3>Projeto Destaque 1</h3>
+                        <p>Uma descrição inspiradora sobre este projeto. Fale sobre o desafio, solução implementada e o resultado alcançado.</p>
+                        <div class="projeto-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <a href="#" class="projeto-link">
+                            Ver Projeto <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="projeto-card">
+                    <div class="projeto-image">
+                        <div class="projeto-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <div class="projeto-content">
+                        <h3>Projeto Destaque 2</h3>
+                        <p>Uma descrição inspiradora sobre este projeto. Fale sobre o desafio, solução implementada e o resultado alcançado.</p>
+                        <div class="projeto-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">API</span>
+                            <span class="tech-tag">Responsive</span>
+                        </div>
+                        <a href="#" class="projeto-link">
+                            Ver Projeto <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="projeto-card">
+                    <div class="projeto-image">
+                        <div class="projeto-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                    </div>
+                    <div class="projeto-content">
+                        <h3>Projeto Destaque 3</h3>
+                        <p>Uma descrição inspiradora sobre este projeto. Fale sobre o desafio, solução implementada e o resultado alcançado.</p>
+                        <div class="projeto-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Database</span>
+                            <span class="tech-tag">API</span>
+                        </div>
+                        <a href="#" class="projeto-link">
+                            Ver Projeto <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para começar algo incrível?</h2>
+                <p>Estou sempre aberto a novas oportunidades e desafios. Vamos conversar!</p>
+                <a href="#contato" class="btn btn-primary btn-large">
+                    Entrar em Contato
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Vamos Conversar!</h2>
+                <p class="section-subtitle">Escolha a melhor forma de entrar em contato</p>
+            </div>
+            <div class="contato-wrapper">
+                <div class="contato-cards">
+                    <a href="https://github.com/DeividFigueiredo" target="_blank" class="contato-card">
+                        <div class="contato-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h3>GitHub</h3>
+                        <p>Veja meus projetos e contribuições</p>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="contato-card">
+                        <div class="contato-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <h3>LinkedIn</h3>
+                        <p>Conecte-se comigo profissionalmente</p>
+                    </a>
+                    <a href="mailto:seu-email@exemplo.com" class="contato-card">
+                        <div class="contato-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>Envie uma mensagem direta</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Deivid Figueiredo</h3>
+                    <p>Desenvolvedor apaixonado por criar experiências digitais incríveis.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#projetos">Projetos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/DeividFigueiredo" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Deivid Figueiredo. Desenvolvido com <i class="fas fa-heart"></i> e muito código.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
