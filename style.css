@@ -409,6 +409,8 @@ body.dark-mode .navbar {
 
 /* Buttons */
 .btn {
+    position: relative;
+    overflow: hidden;
     padding: 14px 32px;
     border-radius: 10px;
     text-decoration: none;
@@ -426,6 +428,23 @@ body.dark-mode .navbar {
     background: var(--gradient-btn-primary);
     color: white;
     box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+.btn .ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0.4;
+    background: rgba(255, 255, 255, 0.7);
+    animation: ripple 600ms ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
 }
 
 .btn-primary:hover {
@@ -796,37 +815,6 @@ body.dark-mode .contato-card {
 .contato-card p {
     color: var(--text-secondary);
     font-size: 0.95rem;
-}
-
-/* Theme reveal overlay (ellipse transition) */
-#theme-reveal {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    pointer-events: none;
-    --x: 50vw;
-    --y: 50vh;
-    background: var(--bg-primary);
-    clip-path: circle(0% at var(--x) var(--y));
-    opacity: 1;
-    /* Wave (clip-path) longer for a more pronounced reveal; fade stays short */
-    transition: clip-path 150ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 150ms linear;
-}
-
-#theme-reveal.reveal-expand {
-    /* slightly larger radius to ensure full coverage during longer animation */
-    clip-path: circle(150% at var(--x) var(--y));
-}
-
-/* Fade class used to remove the overlay after single expansion (no reverse clip animation) */
-#theme-reveal.reveal-fade {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Small accessibility tweak to ensure overlay doesn't block focus outlines */
-#theme-reveal[aria-hidden="true"] {
-    outline: none;
 }
 
 /* Footer */
