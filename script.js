@@ -198,29 +198,34 @@ if ('IntersectionObserver' in window) {
 }
 
 // ==========================================
-// THEME TOGGLE (Modo Escuro - Opcional)
+// THEME TOGGLE (Modo Escuro)
 // ==========================================
-// Descomente para ativar tema escuro
-/*
 const themeToggle = document.getElementById('themeToggle');
-const htmlElement = document.documentElement;
+const body = document.body;
+const icon = themeToggle.querySelector('i');
 
-if (localStorage.getItem('theme') === 'dark') {
-    htmlElement.setAttribute('data-theme', 'dark');
-    themeToggle?.classList.add('active');
+// Carrega o tema salvo
+const savedTheme = localStorage.getItem('theme') || 'light';
+if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
 }
 
-themeToggle?.addEventListener('click', () => {
-    if (htmlElement.getAttribute('data-theme') === 'dark') {
-        htmlElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-    } else {
-        htmlElement.setAttribute('data-theme', 'dark');
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    
+    // Atualiza o ícone
+    if (body.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        localStorage.setItem('theme', 'light');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
     }
-    themeToggle.classList.toggle('active');
 });
-*/
 
 // ==========================================
 // CONSOLE MESSAGE
