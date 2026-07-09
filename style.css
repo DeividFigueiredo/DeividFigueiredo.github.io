@@ -798,6 +798,37 @@ body.dark-mode .contato-card {
     font-size: 0.95rem;
 }
 
+/* Theme reveal overlay (ellipse transition) */
+#theme-reveal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    pointer-events: none;
+    --x: 50vw;
+    --y: 50vh;
+    background: var(--bg-primary);
+    clip-path: circle(0% at var(--x) var(--y));
+    opacity: 1;
+    /* Wave (clip-path) longer for a more pronounced reveal; fade stays short */
+    transition: clip-path 150ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 150ms linear;
+}
+
+#theme-reveal.reveal-expand {
+    /* slightly larger radius to ensure full coverage during longer animation */
+    clip-path: circle(150% at var(--x) var(--y));
+}
+
+/* Fade class used to remove the overlay after single expansion (no reverse clip animation) */
+#theme-reveal.reveal-fade {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Small accessibility tweak to ensure overlay doesn't block focus outlines */
+#theme-reveal[aria-hidden="true"] {
+    outline: none;
+}
+
 /* Footer */
 .footer {
     background: var(--dark);

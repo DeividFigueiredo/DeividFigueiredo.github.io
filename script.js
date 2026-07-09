@@ -198,11 +198,17 @@ if ('IntersectionObserver' in window) {
 }
 
 // ==========================================
-// THEME TOGGLE (Modo Escuro)
+// THEME TOGGLE (Modo Escuro) com transição em elipse
+// Sequência: expandir overlay → trocar tema → retrair overlay
 // ==========================================
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 const icon = themeToggle.querySelector('i');
+const reveal = document.getElementById('theme-reveal');
+
+const LIGHT_BG = '#ffffff';
+const DARK_BG = '#0f172a';
+let animating = false;
 
 // Carrega o tema salvo
 const savedTheme = localStorage.getItem('theme') || 'light';
@@ -212,19 +218,82 @@ if (savedTheme === 'dark') {
     icon.classList.add('fa-sun');
 }
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    // Atualiza o ícone
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    } else {
-        localStorage.setItem('theme', 'light');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    }
+themeToggle.addEventListener('click', (e) => {
+    if (animating) return; // evita reentrância
+    animating = true;
+
+    // calcula posição do clique para centro da elipse
+    const x = e.clientX + 'px';
+    const y = e.clientY + 'px';
+    reveal.style.setProperty('--x', x);
+    reveal.style.setProperty('--y', y);
+    const willBeDark = !body.classList.contains('dark-mode');
+
+    // ajusta cor do reveal para combinar com o novo tema
+    reveal.style.background = willBeDark ? DARK_BG : LIGHT_BG;
+
+    // Ao começar a expansão (primeira onda), trocamos o tema imediatamente
+    const onExpandStart = (ev) => {
+        // some browsers pass propertyName, tolerate both
+        if (ev.propertyName && ev.propertyName !== 'clip-path') return;
+        reveal.removeEventListener('transitionstart', onExpandStart);
+
+        if (willBeDark) {
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    };
+
+    reveal.addEventListener('transitionstart', onExpandStart);
+
+    // inicia expansão
+    reveal.classList.remove('reveal-hide');
+    reveal.classList.add('reveal-expand');
+
+    // quando a expansão terminar, faz só o fade sem retrair o clip-path
+    const onExpandEnd = (ev) => {
+        if (ev.propertyName !== 'clip-path') return;
+        reveal.removeEventListener('transitionend', onExpandEnd);
+
+        // mantém o clip-path (classe reveal-expand) e inicia apenas fade
+        reveal.classList.remove('reveal-fade');
+        // força reflow
+        void reveal.offsetWidth;
+        reveal.classList.add('reveal-fade');
+
+        const onFadeEnd = (ev2) => {
+            if (ev2.propertyName !== 'opacity') return;
+            reveal.removeEventListener('transitionend', onFadeEnd);
+
+            // Reset clip-path instantly WITHOUT animation to prepare para próxima vez
+            // 1) disable transitions inline
+            const prevTransition = reveal.style.transition;
+            reveal.style.transition = 'none';
+            // 2) set clip-path to 0% instantly
+            reveal.style.clipPath = `circle(0% at ${getComputedStyle(reveal).getPropertyValue('--x')} ${getComputedStyle(reveal).getPropertyValue('--y')})`;
+            // force reflow
+            void reveal.offsetWidth;
+            // 3) remove inline styles so CSS classes control transitions again
+            reveal.style.transition = prevTransition || '';
+            reveal.style.clipPath = '';
+
+            // limpa classes e sinaliza fim
+            reveal.classList.remove('reveal-fade');
+            reveal.classList.remove('reveal-expand');
+            animating = false;
+        };
+
+        reveal.addEventListener('transitionend', onFadeEnd);
+    };
+
+    reveal.addEventListener('transitionend', onExpandEnd);
 });
 
 // ==========================================
