@@ -1,0 +1,45 @@
+{
+  "skills": [
+    {
+      "title": "Frontend",
+      "items": [
+        {"name": "HTML5", "tier": "Avançado", "icon": "fab fa-html5"},
+        {"name": "CSS3", "tier": "Avançado", "icon": "fab fa-css3-alt"},
+        {"name": "JavaScript", "tier": "Intermediário", "icon": "fab fa-js"},
+        {"name": "React", "tier": "Intermediário", "icon": "fab fa-react"}
+      ]
+    },
+    {
+      "title": "Backend & Ferramentas",
+      "items": [
+        {"name": "Python", "tier": "Avançado", "icon": "fab fa-python"},
+        {"name": "Node.js", "tier": "Intermediário", "icon": "fab fa-node-js"},
+        {"name": "Git", "tier": "Avançado", "icon": "fab fa-git-alt"},
+        {"name": "Databases", "tier": "Intermediário", "icon": "fas fa-database"}
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Projeto Destaque 1",
+      "description": "Uma descrição inspiradora sobre este projeto. Fale sobre o desafio, solução implementada e o resultado alcançado.",
+      "icon": "fas fa-globe",
+      "url": "https://github.com/DeividFigueiredo/projeto-1",
+      "tech": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "title": "Projeto Destaque 2",
+      "description": "Uma descrição inspiradora sobre este projeto. Fale sobre o desafio, solução implementada e o resultado alcançado.",
+      "icon": "fas fa-mobile-alt",
+      "url": "https://github.com/DeividFigueiredo/projeto-2",
+      "tech": ["React", "API", "Responsive"]
+    },
+    {
+      "title": "Projeto Destaque 3",
+      "description": "Uma descrição inspiradora sobre este projeto. Fale sobre o desafio, solução implementada e o resultado alcançado.",
+      "icon": "fas fa-cogs",
+      "url": "https://github.com/DeividFigueiredo/projeto-3",
+      "tech": ["Python", "Database", "API"]
+    }
+  ]
+}

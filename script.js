@@ -69,12 +69,7 @@ const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
     lastScrollY = window.scrollY;
-    
-    if (lastScrollY > 50) {
-        navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
-    }
+    // visual changes (border reveal) handled via CSS `.scrolled` class
 });
 
 // ==========================================
@@ -204,13 +199,134 @@ const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 const icon = themeToggle.querySelector('i');
 
-// Carrega o tema salvo
-const savedTheme = localStorage.getItem('theme') || 'light';
+const skillsContent = document.getElementById('skillsContent');
+const projectsContent = document.getElementById('projectsContent');
+
+function renderSkills(categories) {
+    if (!skillsContent) return;
+    skillsContent.innerHTML = '';
+
+    categories.forEach((category, index) => {
+        const categoryWrapper = document.createElement('div');
+        categoryWrapper.className = index === 0 ? 'skill-category' : 'skill-category-1';
+
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.className = 'category-title';
+        categoryTitle.textContent = category.title;
+        categoryWrapper.appendChild(categoryTitle);
+
+        const skillsGrid = document.createElement('div');
+        skillsGrid.className = 'skills-grid';
+
+        category.items.forEach(skill => {
+            const skillCard = document.createElement('div');
+            skillCard.className = 'skill-card';
+
+            const skillIcon = document.createElement('div');
+            skillIcon.className = 'skill-icon';
+            skillIcon.innerHTML = `<i class="${skill.icon}"></i>`;
+
+            const skillName = document.createElement('h4');
+            skillName.textContent = skill.name;
+
+            const skillLevel = document.createElement('span');
+            skillLevel.className = 'skill-level';
+            skillLevel.textContent = skill.tier;
+
+            skillCard.appendChild(skillIcon);
+            skillCard.appendChild(skillName);
+            skillCard.appendChild(skillLevel);
+            skillsGrid.appendChild(skillCard);
+        });
+
+        categoryWrapper.appendChild(skillsGrid);
+        skillsContent.appendChild(categoryWrapper);
+    });
+}
+
+function renderProjects(projects) {
+    if (!projectsContent) return;
+    projectsContent.innerHTML = '';
+
+    projects.forEach(project => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'projeto-card';
+
+        projectCard.innerHTML = `
+            <div class="projeto-image">
+                <div class="projeto-icon">
+                    <i class="${project.icon}"></i>
+                </div>
+            </div>
+            <div class="projeto-content">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <div class="projeto-tech">
+                    ${project.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                </div>
+                <a href="${project.url}" class="projeto-link" target="_blank">
+                    Ver Projeto <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        `;
+
+        projectsContent.appendChild(projectCard);
+    });
+}
+
+function showJsonLoadWarning() {
+    const warning = document.createElement('div');
+    warning.style.position = 'fixed';
+    warning.style.top = '90px';
+    warning.style.left = '50%';
+    warning.style.transform = 'translateX(-50%)';
+    warning.style.zIndex = '2001';
+    warning.style.background = 'rgba(255, 69, 58, 0.95)';
+    warning.style.color = 'white';
+    warning.style.padding = '0.75rem 1.25rem';
+    warning.style.borderRadius = '12px';
+    warning.style.boxShadow = '0 10px 30px rgba(0,0,0,0.18)';
+    warning.style.fontSize = '0.95rem';
+    warning.textContent = 'Aviso: o Chrome bloqueia fetch de JSON ao abrir o arquivo localmente. Use um servidor local (por exemplo python3 -m http.server).';
+    document.body.appendChild(warning);
+}
+
+function loadPortfolioData() {
+    fetch('./data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('JSON não encontrado');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.skills) renderSkills(data.skills);
+            if (data.projects) renderProjects(data.projects);
+        })
+        .catch(error => {
+            console.warn('Não foi possível carregar data.json:', error);
+            if (window.location.protocol === 'file:') {
+                showJsonLoadWarning();
+            }
+        });
+}
+
+// Carrega o tema salvo (padrão: dark)
+const savedTheme = localStorage.getItem('theme') || 'dark';
 if (savedTheme === 'dark') {
     body.classList.add('dark-mode');
     icon.classList.remove('fa-moon');
     icon.classList.add('fa-sun');
 }
+
+// navbar element already referenced earlier; toggle scrolled class on scroll
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
 
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
@@ -240,4 +356,5 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Adiciona classe de carregamento ao body
     document.body.classList.add('loaded');
+    loadPortfolioData();
 });
