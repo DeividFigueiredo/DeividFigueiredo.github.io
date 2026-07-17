@@ -21,25 +21,40 @@
   ],
   "projects": [
     {
-      "title": "Projeto Destaque 1",
-      "description": "Uma descrição inspiradora sobre este projeto. Fale sobre o desafio, solução implementada e o resultado alcançado.",
+      "title": "Guandu Marmores",
+      "description": "Site institucional de uma empresa de mármores e granitos de alto padão. O projeto envolveu a criação de um design moderno e responsivo, além da implementação de funcionalidades interativas para melhorar a experiência do usuário.",
       "icon": "fas fa-globe",
-      "url": "https://github.com/DeividFigueiredo/projeto-1",
+      "url": "https://guandumarmores.com.br",
+      "page": "guandu-marmores.html",
       "tech": ["HTML", "CSS", "JavaScript"]
     },
     {
-      "title": "Projeto Destaque 2",
-      "description": "Uma descrição inspiradora sobre este projeto. Fale sobre o desafio, solução implementada e o resultado alcançado.",
+      "title": "Cuide+",
+      "description": "Aplicativo móvel voltado para a saúde e bem-estar de clientes de operadoras de saúde. O projeto incluiu a integração com APIs administrativas, permitindo que os usuários acessem informações sobre seus planos de saúde e recebam notificações personalizadas.",
       "icon": "fas fa-mobile-alt",
       "url": "https://github.com/DeividFigueiredo/projeto-2",
-      "tech": ["React", "API", "Responsive"]
+      "page": "cuideplus.html",
+      "tech": ["React", "API", "Responsive"],
+      "screenshots": [
+        {
+          "title": "Tela do Painel do Cliente",
+          "image": "https://via.placeholder.com/900x600/6366f1/ffffff?text=Cuide%2B"
+        }
+      ]
     },
     {
-      "title": "Projeto Destaque 3",
-      "description": "Uma descrição inspiradora sobre este projeto. Fale sobre o desafio, solução implementada e o resultado alcançado.",
+      "title": "EverFlow",
+      "description": "Sistema de integração de dados e automação de processos para empresas. O projeto envolveu a criação de um Gateway de API para facilitar a comunicação entre diferentes sistemas.",
       "icon": "fas fa-cogs",
       "url": "https://github.com/DeividFigueiredo/projeto-3",
-      "tech": ["Python", "Database", "API"]
+      "page": "everflow.html",
+      "tech": ["Python", "Database", "API"],
+      "screenshots": [
+        {
+          "title": "Visão Geral da Integração de Dados",
+          "image": "https://via.placeholder.com/900x600/1f2937/ffffff?text=EverFlow"
+        }
+      ]
     }
   ]
 }

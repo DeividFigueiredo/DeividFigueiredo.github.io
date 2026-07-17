@@ -23,18 +23,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
-navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
+if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
 
-// Fecha o menu ao clicar fora
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.navbar')) {
-        navLinks.classList.remove('active');
-        navToggle.classList.remove('active');
-    }
-});
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.navbar')) {
+            navLinks.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    });
+}
 
 // ==========================================
 // SCROLL ANIMATIONS
@@ -197,7 +199,7 @@ if ('IntersectionObserver' in window) {
 // ==========================================
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
-const icon = themeToggle.querySelector('i');
+const icon = themeToggle ? themeToggle.querySelector('i') : null;
 
 const skillsContent = document.getElementById('skillsContent');
 const projectsContent = document.getElementById('projectsContent');
@@ -264,9 +266,11 @@ function renderProjects(projects) {
                 <div class="projeto-tech">
                     ${project.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
                 </div>
-                <a href="${project.url}" class="projeto-link" target="_blank">
-                    Ver Projeto <i class="fas fa-arrow-right"></i>
-                </a>
+                        <div class="project-actions">
+                    <a href="${project.page || project.url || 'index.html#projetos'}" class="projeto-link" ${project.page ? '' : 'target="_blank" rel="noopener noreferrer"'}>
+                        Ver Projeto <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         `;
 
@@ -301,7 +305,9 @@ function loadPortfolioData() {
         })
         .then(data => {
             if (data.skills) renderSkills(data.skills);
-            if (data.projects) renderProjects(data.projects);
+            if (data.projects) {
+                renderProjects(data.projects);
+            }
         })
         .catch(error => {
             console.warn('Não foi possível carregar data.json:', error);
@@ -315,8 +321,10 @@ function loadPortfolioData() {
 const savedTheme = localStorage.getItem('theme') || 'dark';
 if (savedTheme === 'dark') {
     body.classList.add('dark-mode');
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
+    if (icon) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
 }
 
 // navbar element already referenced earlier; toggle scrolled class on scroll
@@ -328,19 +336,25 @@ window.addEventListener("scroll", () => {
     }
 });
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
 
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    } else {
-        localStorage.setItem('theme', 'light');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    }
-});
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            if (icon) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        } else {
+            localStorage.setItem('theme', 'light');
+            if (icon) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    });
+}
 
 // ==========================================
 // CONSOLE MESSAGE
