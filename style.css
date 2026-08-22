@@ -675,6 +675,10 @@ body.dark-mode .skill-card {
     display: inline-block;
 }
 
+.projetos .container{
+    max-width: 90vw;
+}
+
 /* Projetos */
 .projetos-grid {
     display: grid;
@@ -712,6 +716,21 @@ body.dark-mode .projeto-card {
     justify-content: center;
     position: relative;
     overflow: hidden;
+}
+
+.projeto-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.projeto-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* ou contain */
+    border-radius: inherit;
 }
 
 .projeto-image::before {
@@ -771,6 +790,10 @@ body.dark-mode .projeto-card {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
+}
+
+.projeto-link.secondary {
+    margin-left: 64px;
 }
 
 .projeto-link {

@@ -251,13 +251,33 @@ function renderProjects(projects) {
     projectsContent.innerHTML = '';
 
     projects.forEach(project => {
+
+        const verSiteButton = project.showWebsiteButton
+    ? `
+        <a href="${project.url}"
+           class="projeto-link secondary"
+           target="_blank"
+           rel="noopener noreferrer">
+            Ver Site <i class="fas fa-external-link-alt"></i>
+        </a>
+      `
+    : "";
+
+        const icon = project.icon.endsWith('.png') ||
+                     project.icon.endsWith('.jpg') ||
+                     project.icon.endsWith('.jpeg') ||
+                     project.icon.endsWith('.svg') ||
+                     project.icon.endsWith('.webp')
+            ? `<img src="${project.icon}" class="projeto-logo" alt="${project.title}">`
+            : `<i class="${project.icon}"></i>`;
+
         const projectCard = document.createElement('div');
         projectCard.className = 'projeto-card';
 
         projectCard.innerHTML = `
             <div class="projeto-image">
                 <div class="projeto-icon">
-                    <i class="${project.icon}"></i>
+                    ${icon}
                 </div>
             </div>
             <div class="projeto-content">
@@ -266,10 +286,14 @@ function renderProjects(projects) {
                 <div class="projeto-tech">
                     ${project.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
                 </div>
-                        <div class="project-actions">
-                    <a href="${project.page || project.url || 'index.html#projetos'}" class="projeto-link" ${project.page ? '' : 'target="_blank" rel="noopener noreferrer"'}>
+                <div class="project-actions">
+                    <a href="${project.page || project.url || 'index.html#projetos'}"
+                    class="projeto-link"
+                    ${project.page ? '' : 'target="_blank" rel="noopener noreferrer"'}>
                         Ver Projeto <i class="fas fa-arrow-right"></i>
                     </a>
+
+                    ${verSiteButton}
                 </div>
             </div>
         `;
@@ -278,25 +302,10 @@ function renderProjects(projects) {
     });
 }
 
-function showJsonLoadWarning() {
-    const warning = document.createElement('div');
-    warning.style.position = 'fixed';
-    warning.style.top = '90px';
-    warning.style.left = '50%';
-    warning.style.transform = 'translateX(-50%)';
-    warning.style.zIndex = '2001';
-    warning.style.background = 'rgba(255, 69, 58, 0.95)';
-    warning.style.color = 'white';
-    warning.style.padding = '0.75rem 1.25rem';
-    warning.style.borderRadius = '12px';
-    warning.style.boxShadow = '0 10px 30px rgba(0,0,0,0.18)';
-    warning.style.fontSize = '0.95rem';
-    warning.textContent = 'Aviso: o Chrome bloqueia fetch de JSON ao abrir o arquivo localmente. Use um servidor local (por exemplo python3 -m http.server).';
-    document.body.appendChild(warning);
-}
+
 
 function loadPortfolioData() {
-    fetch('./data.json')
+    return fetch('./data.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('JSON não encontrado');
@@ -317,6 +326,16 @@ function loadPortfolioData() {
         });
 }
 
+document.addEventListener("DOMContentLoaded", async () => {
+    await loadPortfolioData();
+
+    if (window.location.hash) {
+        document.querySelector(window.location.hash)?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+});
 // Carrega o tema salvo (padrão: dark)
 const savedTheme = localStorage.getItem('theme') || 'dark';
 if (savedTheme === 'dark') {
