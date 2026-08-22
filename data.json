@@ -22,7 +22,7 @@
   "projects": [
     {
       "title": "Guandu Marmores",
-      "description": "Site institucional de uma empresa de mármores e granitos de alto padão. O projeto envolveu a criação de um design moderno e responsivo, além da implementação de funcionalidades interativas para melhorar a experiência do usuário.",
+      "description": "Site institucional de uma empresa de mármores e granitos de alto padão. O projeto envolveu a criação de um design moderno e responsivo, além da implementação de funcionalidades avançadas.",
       "icon": "assets/img/Guandu-site.png",
       "logo": "assets/img/Guandu-site.png", 
       "url": "https://guandumarmores.com.br",
@@ -32,9 +32,9 @@
     },
     {
       "title": "Cuide+",
-      "description": "Aplicativo móvel voltado para a saúde e bem-estar de clientes de operadoras de saúde. O projeto incluiu a integração com APIs administrativas, permitindo que os usuários acessem informações sobre seus planos de saúde e recebam notificações personalizadas.",
-      "icon": "assets/img/cuidemais1.png",
-      "logo": "assets/img/cuidemais1.png", 
+      "description": "Aplicativo móvel voltado para a saúde e bem-estar de clientes de operadoras de saúde. O projeto incluiu a integração com APIs administrativas, permitindo que os usuários gerenciassem sua saúde.",
+      "icon": "assets/img/cuidemais.png",
+      "logo": "assets/img/cuidemais.png", 
       "url": "https://github.com/DeividFigueiredo/projeto-2",
       "page": "cuidemais.html",
       "tech": ["React", "API", "Responsive"],
@@ -60,18 +60,18 @@
         }
       ]
     },
-     {
+    {
       "title": "Savanna",
       "description": "Sistema de acompanhamento e administração de vendas para pequenas e médias empresas",
-      "icon": "assets/img/savanna-logo.png",
-      "logo": "assets/img/savanna-logo.png",
+      "icon": "assets/img/Savanas.webp",
+      "logo": "assets/img/Savanas.webp",
       "url": "https://github.com/DeividFigueiredo/projeto-3",
       "page": "savanna.html",
       "tech": ["Python", "Database", "API"],
       "screenshots": [
         {
           "title": "Visão Geral da Integração de Dados",
-          "image": "https://via.placeholder.com/900x600/1f2937/ffffff?text=EverFlow"
+          "image": "https://via.placeholder.com/900x600/1f2937/ffffff?text=Savanna"
         }
       ]
     }
