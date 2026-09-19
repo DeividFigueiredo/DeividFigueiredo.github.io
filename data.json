@@ -1,21 +1,29 @@
 {
+  "hero": {
+    "image": "assets/img/hero-pixel-art.svg",
+    "video": ""
+  },
   "skills": [
     {
-      "title": "Frontend",
+      "title": "Frontend & UX",
       "items": [
         {"name": "HTML5", "tier": "Avançado", "icon": "fab fa-html5"},
         {"name": "CSS3", "tier": "Avançado", "icon": "fab fa-css3-alt"},
-        {"name": "JavaScript", "tier": "Intermediário", "icon": "fab fa-js"},
-        {"name": "React", "tier": "Intermediário", "icon": "fab fa-react"}
+        {"name": "JavaScript", "tier": "Avançado", "icon": "fab fa-js"},
+        {"name": "TypeScript", "tier": "Intermediário", "icon": "fas fa-code"},
+        {"name": "React", "tier": "Intermediário", "icon": "fab fa-react"},
+        {"name": "Figma", "tier": "Intermediário", "icon": "fas fa-pencil-ruler"}
       ]
     },
     {
-      "title": "Backend & Ferramentas",
+      "title": "Backend & Arquitetura",
       "items": [
         {"name": "Python", "tier": "Avançado", "icon": "fab fa-python"},
         {"name": "Node.js", "tier": "Intermediário", "icon": "fab fa-node-js"},
-        {"name": "Git", "tier": "Avançado", "icon": "fab fa-git-alt"},
-        {"name": "Databases", "tier": "Intermediário", "icon": "fas fa-database"}
+        {"name": "NestJS", "tier": "Intermediário", "icon": "fas fa-server"},
+        {"name": "APIs", "tier": "Avançado", "icon": "fas fa-network-wired"},
+        {"name": "PostgreSQL", "tier": "Intermediário", "icon": "fas fa-database"},
+        {"name": "Git", "tier": "Avançado", "icon": "fab fa-git-alt"}
       ]
     }
   ],
@@ -70,8 +78,8 @@
     {
       "title": "Savanna",
       "description": "Base multiprojeto para sistemas web com gestão comercial, autenticação, multiempresa, dashboard e módulos de CRM prontos para uso.",
-      "icon": "assets/img/savanna-logo.png",
-      "logo": "assets/img/savanna-logo.png",
+      "icon": "assets/img/savanna-logo-b.png",
+      "logo": "assets/img/savanna-logo-b.png",
       "url": "https://github.com/DeividFigueiredo/Savanna",
       "page": "savanna.html",
       "websiteButtonLabel": "Ver Repositório",
@@ -86,8 +94,8 @@
     {
       "title": "Inova - Gestão Pública",
       "description": "Site institucional para uma empresa focada em inteligência aplicada à gestão pública, com narrativa, áreas de atuação e contato para conversas comerciais e institucionais.",
-      "icon": "fas fa-building-columns",
-      "logo": "fas fa-building-columns",
+      "icon": "assets/img/inova-logo.png",
+      "logo": "assets/img/inova-logo.png",
       "url": "https://inovaigp.com.br",
       "page": "inova.html",
       "showWebsiteButton": true,

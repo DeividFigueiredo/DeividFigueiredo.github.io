@@ -204,6 +204,43 @@ const icon = themeToggle ? themeToggle.querySelector('i') : null;
 const skillsContent = document.getElementById('skillsContent');
 const projectsContent = document.getElementById('projectsContent');
 
+function renderHeroImage(heroData) {
+    const heroVisual = document.getElementById('heroVisual');
+    if (!heroVisual || !heroData) return;
+
+    heroVisual.innerHTML = '';
+
+    if (heroData.video) {
+        const video = document.createElement('video');
+        video.src = heroData.video;
+        video.autoplay = true;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.controls = false;
+        video.preload = 'auto';
+        video.style.width = '100%';
+        video.style.height = '100%';
+        video.style.objectFit = 'cover';
+        video.style.display = 'block';
+        video.style.borderRadius = 'inherit';
+        heroVisual.appendChild(video);
+        video.play().catch(() => {});
+        return;
+    }
+
+    const imageSrc = heroData.image || heroData.logo || heroData.icon;
+    if (!imageSrc) return;
+
+    heroVisual.style.backgroundImage = `url('${imageSrc}')`;
+    heroVisual.style.backgroundSize = 'contain';
+    heroVisual.style.backgroundPosition = 'center';
+    heroVisual.style.backgroundRepeat = 'no-repeat';
+    heroVisual.style.backgroundColor = 'transparent';
+    heroVisual.style.filter = 'drop-shadow(0 18px 40px rgba(15, 23, 42, 0.28)) saturate(0.95) contrast(1.04) brightness(1.02)';
+    heroVisual.style.boxShadow = 'none';
+}
+
 function renderSkills(categories) {
     if (!skillsContent) return;
     skillsContent.innerHTML = '';
@@ -250,20 +287,23 @@ function setupProjectsCarousel() {
     const projectsGrid = document.getElementById('projectsContent');
     const carouselHint = document.getElementById('projectsCarouselHint');
     const carouselBack = document.getElementById('projectsCarouselBack');
+    const carousel = projectsGrid?.closest('.projects-carousel');
 
-    if (!projectsGrid || !carouselHint || !carouselBack) return;
+    if (!projectsGrid || !carouselHint || !carouselBack || !carousel) return;
 
     const updateCarouselState = () => {
         const maxScrollLeft = Math.max(projectsGrid.scrollWidth - projectsGrid.clientWidth, 0);
         const hasOverflow = maxScrollLeft > 4;
         const atStart = projectsGrid.scrollLeft <= 4;
         const atEnd = projectsGrid.scrollLeft >= maxScrollLeft - 2;
+        const shouldShowFade = false;
 
         carouselHint.hidden = !hasOverflow || atEnd;
         carouselBack.hidden = !hasOverflow || atStart;
 
-        carouselHint.classList.toggle('visible', hasOverflow && !atEnd);
-        carouselBack.classList.toggle('visible', hasOverflow && !atStart);
+        carouselHint.classList.toggle('visible', !atEnd && hasOverflow);
+        carouselBack.classList.toggle('visible', !atStart && hasOverflow);
+        carousel.classList.toggle('has-overflow', shouldShowFade);
 
         if (!hasOverflow) {
             projectsGrid.scrollLeft = 0;
@@ -361,6 +401,7 @@ function loadPortfolioData() {
             return response.json();
         })
         .then(data => {
+            if (data.hero) renderHeroImage(data.hero);
             if (data.skills) renderSkills(data.skills);
             if (data.projects) {
                 renderProjects(data.projects);
