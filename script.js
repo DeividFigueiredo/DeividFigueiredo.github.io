@@ -352,7 +352,7 @@ function renderProjects(projects) {
             ? `<a href="${project.page}"
                     class="projeto-link"
                     ${project.page ? '' : 'target="_blank" rel="noopener noreferrer"'}>
-                    Ver Projeto <i class="fas fa-arrow-right"></i>
+                    Mais sobre <i class="fas fa-arrow-right"></i>
                 </a>`
             : '';
 
