@@ -628,6 +628,13 @@ body.dark-mode .sobre-card {
     gap: 3rem;
 }
 
+/* Skills section should be backgroundless as requested */
+#skills {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
 .skill-category,
 .skill-category-1 {
     display: block;
@@ -725,6 +732,122 @@ body.dark-mode .skill-card {
     position: relative;
     width: 100%;
     overflow: hidden;
+}
+
+/* Section background for projetos to avoid bleeding of page background */
+.projetos {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 0;
+}
+
+body.dark-mode .projetos {
+    background: var(--bg-primary);
+    border-color: rgba(255,255,255,0.04);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.35);
+}
+
+/* Side fade + blur overlays for scrollable projects area (only when corresponding class present) */
+.projects-carousel.show-left-fade::before,
+.projects-carousel.show-right-fade::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 88px;
+    z-index: 3;
+    pointer-events: none;
+    /* blur removed per request */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.projects-carousel.show-left-fade::before {
+    left: 0;
+    border-radius: 18px 0 0 18px;
+    background: linear-gradient(
+        to right,
+        var(--bg-primary) 0%,
+        rgba(255,255,255,0.92) 8%,
+        rgba(255,255,255,0.36) 22%,
+        rgba(255,255,255,0.08) 45%,
+        rgba(255,255,255,0) 75%
+    );
+}
+
+.projects-carousel.show-right-fade::after {
+    right: 0;
+    border-radius: 0 18px 18px 0;
+    background: linear-gradient(
+        to left,
+        var(--bg-primary) 0%,
+        rgba(255,255,255,0.92) 8%,
+        rgba(255,255,255,0.36) 22%,
+        rgba(255,255,255,0.08) 45%,
+        rgba(255,255,255,0) 75%
+    );
+}
+
+/* Use masking on the inner grid for a smooth alpha fade of items at edges.
+   Apply directional masks so only the active side fades. */
+.projects-carousel.show-left-fade:not(.show-right-fade) .projetos-grid {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 100%);
+}
+.projects-carousel.show-right-fade:not(.show-left-fade) .projetos-grid {
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, black 12%, black 100%);
+    mask-image: linear-gradient(to left, transparent 0%, black 12%, black 100%);
+}
+.projects-carousel.show-left-fade.show-right-fade .projetos-grid {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* Dark mode adjustments: ensure overlays match dark background */
+body.dark-mode .projects-carousel.show-left-fade::before,
+body.dark-mode .projects-carousel.show-right-fade::after {
+    background: none;
+}
+body.dark-mode .projects-carousel.show-left-fade::before {
+    left: 0;
+    border-radius: 18px 0 0 18px;
+    background: linear-gradient(
+        to right,
+        var(--bg-primary) 0%,
+        rgba(15,23,42,0.92) 8%,
+        rgba(15,23,42,0.36) 22%,
+        rgba(15,23,42,0.08) 45%,
+        rgba(15,23,42,0) 75%
+    );
+}
+body.dark-mode .projects-carousel.show-right-fade::after {
+    right: 0;
+    border-radius: 0 18px 18px 0;
+    background: linear-gradient(
+        to left,
+        var(--bg-primary) 0%,
+        rgba(15,23,42,0.92) 8%,
+        rgba(15,23,42,0.36) 22%,
+        rgba(15,23,42,0.08) 45%,
+        rgba(15,23,42,0) 75%
+    );
+}
+
+@media (max-width: 640px) {
+    .projects-carousel.show-left-fade::before,
+    .projects-carousel.show-right-fade::after {
+        width: 48px;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+    .projects-carousel.show-left-fade .projetos-grid,
+    .projects-carousel.show-right-fade .projetos-grid {
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    }
 }
 
 .projects-carousel-hint {
