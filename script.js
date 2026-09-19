@@ -246,22 +246,75 @@ function renderSkills(categories) {
     });
 }
 
+function setupProjectsCarousel() {
+    const projectsGrid = document.getElementById('projectsContent');
+    const carouselHint = document.getElementById('projectsCarouselHint');
+    const carouselBack = document.getElementById('projectsCarouselBack');
+
+    if (!projectsGrid || !carouselHint || !carouselBack) return;
+
+    const updateCarouselState = () => {
+        const maxScrollLeft = Math.max(projectsGrid.scrollWidth - projectsGrid.clientWidth, 0);
+        const hasOverflow = maxScrollLeft > 4;
+        const atStart = projectsGrid.scrollLeft <= 4;
+        const atEnd = projectsGrid.scrollLeft >= maxScrollLeft - 2;
+
+        carouselHint.hidden = !hasOverflow || atEnd;
+        carouselBack.hidden = !hasOverflow || atStart;
+
+        carouselHint.classList.toggle('visible', hasOverflow && !atEnd);
+        carouselBack.classList.toggle('visible', hasOverflow && !atStart);
+
+        if (!hasOverflow) {
+            projectsGrid.scrollLeft = 0;
+        }
+    };
+
+    carouselHint.addEventListener('click', () => {
+        const nextStep = Math.min(projectsGrid.clientWidth * 0.85, 300);
+        projectsGrid.scrollBy({ left: nextStep, behavior: 'smooth' });
+    });
+
+    carouselBack.addEventListener('click', () => {
+        const prevStep = Math.min(projectsGrid.clientWidth * 0.85, 300);
+        projectsGrid.scrollBy({ left: -prevStep, behavior: 'smooth' });
+    });
+
+    projectsGrid.addEventListener('scroll', updateCarouselState);
+    window.addEventListener('resize', updateCarouselState);
+
+    requestAnimationFrame(updateCarouselState);
+    setTimeout(updateCarouselState, 150);
+}
+
 function renderProjects(projects) {
     if (!projectsContent) return;
     projectsContent.innerHTML = '';
 
     projects.forEach(project => {
+        const showWebsiteButton = project.showWebsiteButton !== false;
+        const showProjectButton = project.showProjectButton !== false;
+        const websiteButtonLabel = project.websiteButtonLabel || 'Ver Site';
 
-        const verSiteButton = project.showWebsiteButton
-    ? `
+        const verSiteButton = showWebsiteButton && project.url
+            ? `
         <a href="${project.url}"
            class="projeto-link secondary"
            target="_blank"
            rel="noopener noreferrer">
-            Ver Site <i class="fas fa-external-link-alt"></i>
+            ${websiteButtonLabel} <i class="fas fa-external-link-alt"></i>
         </a>
       `
-    : "";
+            : "";
+
+        const hasProjectPage = Boolean(project.page) && showProjectButton;
+        const projectAction = hasProjectPage
+            ? `<a href="${project.page}"
+                    class="projeto-link"
+                    ${project.page ? '' : 'target="_blank" rel="noopener noreferrer"'}>
+                    Ver Projeto <i class="fas fa-arrow-right"></i>
+                </a>`
+            : '';
 
         const icon = project.icon.endsWith('.png') ||
                      project.icon.endsWith('.jpg') ||
@@ -287,12 +340,7 @@ function renderProjects(projects) {
                     ${project.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
                 </div>
                 <div class="project-actions">
-                    <a href="${project.page || project.url || 'index.html#projetos'}"
-                    class="projeto-link"
-                    ${project.page ? '' : 'target="_blank" rel="noopener noreferrer"'}>
-                        Ver Projeto <i class="fas fa-arrow-right"></i>
-                    </a>
-
+                    ${projectAction}
                     ${verSiteButton}
                 </div>
             </div>
@@ -316,6 +364,7 @@ function loadPortfolioData() {
             if (data.skills) renderSkills(data.skills);
             if (data.projects) {
                 renderProjects(data.projects);
+                setupProjectsCarousel();
             }
         })
         .catch(error => {

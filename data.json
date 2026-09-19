@@ -28,16 +28,20 @@
       "url": "https://guandumarmores.com.br",
       "page": "guandu-marmores.html",
       "showWebsiteButton": true,
+      "showProjectButton": false,
       "tech": ["HTML", "CSS", "JavaScript"]
     },
     {
       "title": "Cuide+",
-      "description": "Aplicativo móvel voltado para a saúde e bem-estar de clientes de operadoras de saúde. O projeto incluiu a integração com APIs administrativas, permitindo que os usuários gerenciassem sua saúde.",
+      "description": "Aplicativo de saúde para clientes de operadoras, com acesso ao plano, carteirinha, autorizações, boletos, telemedicina e notificações em tempo real.",
       "icon": "assets/img/cuidemais.png",
       "logo": "assets/img/cuidemais.png", 
-      "url": "https://github.com/DeividFigueiredo/projeto-2",
+      "url": "nda.html",
+      "websiteButtonLabel": "Ver Repositório",
       "page": "cuidemais.html",
-      "tech": ["React", "API", "Responsive"],
+      "showWebsiteButton": true,
+      "showProjectButton": true,
+      "tech": ["React Native", "Expo", "JavaScript", "API", "Mobile"],
       "screenshots": [
         {
           "title": "Tela do Painel do Cliente",
@@ -47,12 +51,15 @@
     },
     {
       "title": "EverFlow",
-      "description": "Sistema de integração de dados e automação de processos para empresas. O projeto envolveu a criação de um Gateway de API para facilitar a comunicação entre diferentes sistemas.",
+      "description": "Gateway de integração em Python para conectar apps a sistemas externos com segurança, criptografia e rotas específicas de autenticação e dados.",
       "icon": "assets/img/everflow-cover.png",
       "logo": "assets/img/everflow-cover.png",
-      "url": "https://github.com/DeividFigueiredo/projeto-3",
+      "url": "nda.html",
+      "websiteButtonLabel": "Ver Repositório",
       "page": "everflow.html",
-      "tech": ["Python", "Database", "API"],
+      "showWebsiteButton": true,
+      "showProjectButton": true,
+      "tech": ["Python", "Flask", "API", "Criptografia"],
       "screenshots": [
         {
           "title": "Visão Geral da Integração de Dados",
@@ -62,16 +69,33 @@
     },
     {
       "title": "Savanna",
-      "description": "Sistema de acompanhamento e administração de vendas para pequenas e médias empresas",
-      "icon": "assets/img/Savanas.webp",
-      "logo": "assets/img/Savanas.webp",
-      "url": "https://github.com/DeividFigueiredo/projeto-3",
+      "description": "Base multiprojeto para sistemas web com gestão comercial, autenticação, multiempresa, dashboard e módulos de CRM prontos para uso.",
+      "icon": "assets/img/savanna-logo.png",
+      "logo": "assets/img/savanna-logo.png",
+      "url": "https://github.com/DeividFigueiredo/Savanna",
       "page": "savanna.html",
-      "tech": ["Python", "Database", "API"],
+      "websiteButtonLabel": "Ver Repositório",
+      "tech": ["TypeScript", "React", "NestJS", "Prisma", "PostgreSQL"],
       "screenshots": [
         {
-          "title": "Visão Geral da Integração de Dados",
+          "title": "Base de gestão comercial",
           "image": "https://via.placeholder.com/900x600/1f2937/ffffff?text=Savanna"
+        }
+      ]
+    },
+    {
+      "title": "Inova - Gestão Pública",
+      "description": "Site institucional para uma empresa focada em inteligência aplicada à gestão pública, com narrativa, áreas de atuação e contato para conversas comerciais e institucionais.",
+      "icon": "fas fa-building-columns",
+      "logo": "fas fa-building-columns",
+      "url": "https://inovaigp.com.br",
+      "page": "inova.html",
+      "showWebsiteButton": true,
+      "tech": ["Next.js", "TypeScript", "Design System", "Landing Page", "Marketing Digital"],
+      "screenshots": [
+        {
+          "title": "Landing page institucional",
+          "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
         }
       ]
     }
