@@ -907,6 +907,8 @@ body.dark-mode .projects-carousel.show-right-fade::after {
     gap: 2rem;
     overflow-x: auto;
     overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
     padding: 0.5rem 3.5rem 1rem 0.25rem;
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;

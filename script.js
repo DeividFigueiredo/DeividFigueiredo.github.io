@@ -293,24 +293,36 @@ function setupProjectsCarousel() {
 
     const updateCarouselState = () => {
         const maxScrollLeft = Math.max(projectsGrid.scrollWidth - projectsGrid.clientWidth, 0);
-        const hasOverflow = maxScrollLeft > 4;
-        const atStart = projectsGrid.scrollLeft <= 4;
-        const atEnd = projectsGrid.scrollLeft >= maxScrollLeft - 2;
-        // determine arrow visibility
+        const hasOverflow = maxScrollLeft > 12;
+        const atStart = projectsGrid.scrollLeft <= 12;
+        const atEnd = projectsGrid.scrollLeft >= maxScrollLeft - 12;
+
+        const nextState = {
+            hasOverflow,
+            atStart,
+            atEnd,
+            showLeftFade: hasOverflow && !atStart,
+            showRightFade: hasOverflow && !atEnd,
+        };
+
+        const previousState = carousel.dataset.carouselState;
+        const stateChanged = !previousState || previousState !== JSON.stringify(nextState);
+
+        if (!stateChanged) {
+            return;
+        }
+
+        carousel.dataset.carouselState = JSON.stringify(nextState);
+
         carouselHint.hidden = !hasOverflow || atEnd;
         carouselBack.hidden = !hasOverflow || atStart;
 
-        carouselHint.classList.toggle('visible', !atEnd && hasOverflow);
-        carouselBack.classList.toggle('visible', !atStart && hasOverflow);
+        carouselHint.classList.toggle('visible', nextState.showRightFade);
+        carouselBack.classList.toggle('visible', nextState.showLeftFade);
 
-        // Tie fades directly to the actual arrow visibility for 1:1 behavior
-        const showLeftFade = hasOverflow && !carouselBack.hidden;
-        const showRightFade = hasOverflow && !carouselHint.hidden;
-
-        // parent flags used by CSS to show the proper side overlays
         carousel.classList.toggle('has-overflow', hasOverflow);
-        carousel.classList.toggle('show-left-fade', showLeftFade);
-        carousel.classList.toggle('show-right-fade', showRightFade);
+        carousel.classList.toggle('show-left-fade', nextState.showLeftFade);
+        carousel.classList.toggle('show-right-fade', nextState.showRightFade);
 
         if (!hasOverflow) {
             projectsGrid.scrollLeft = 0;
