@@ -62,7 +62,6 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    /* removed background color and blur per user request */
     background: transparent;
     backdrop-filter: none;
     /* hide the bottom line when at top; reveal on scroll via .scrolled */
@@ -523,6 +522,11 @@ section {
 section:nth-child(even) {
     background: var(--bg-secondary);
     transition: var(--transition);
+}
+
+/* o hero fica no fundo da página pra navbar sumir nele antes de rolar */
+.hero.hero {
+    background: transparent;
 }
 
 /* Sobre */
