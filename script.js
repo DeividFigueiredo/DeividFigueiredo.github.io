@@ -1,6 +1,4 @@
-// ==========================================
-// SMOOTH SCROLL NAVIGATION
-// ==========================================
+// Rolagem suave nos links do menu
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -17,9 +15,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ==========================================
-// MOBILE MENU TOGGLE
-// ==========================================
+// Menu no celular
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
@@ -38,9 +34,7 @@ if (navToggle && navLinks) {
     });
 }
 
-// ==========================================
-// SCROLL ANIMATIONS
-// ==========================================
+// Cards aparecem ao rolar
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -63,20 +57,9 @@ document.querySelectorAll('.projeto-card, .skill-card, .sobre-card, .contato-car
     observer.observe(el);
 });
 
-// ==========================================
-// NAVBAR SCROLL EFFECT
-// ==========================================
-let lastScrollY = 0;
 const navbar = document.querySelector('.navbar');
 
-window.addEventListener('scroll', () => {
-    lastScrollY = window.scrollY;
-    // visual changes (border reveal) handled via CSS `.scrolled` class
-});
-
-// ==========================================
-// ACTIVE NAV LINK HIGHLIGHTING
-// ==========================================
+// Destaca no menu a seção atual
 const sections = document.querySelectorAll('section');
 const navItems = document.querySelectorAll('.nav-links a');
 
@@ -98,105 +81,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ==========================================
-// PARALLAX EFFECT
-// ==========================================
-window.addEventListener('scroll', () => {
-    const blobs = document.querySelectorAll('.blob');
-    const scrollY = window.scrollY;
-    
-    blobs.forEach((blob, index) => {
-        blob.style.transform = `translateY(${scrollY * (0.5 + index * 0.1)}px)`;
-    });
-});
-
-// ==========================================
-// NUMERO COUNTER ANIMATION
-// ==========================================
-function animateCounter(element, target, duration = 2000) {
-    let current = 0;
-    const increment = target / (duration / 16);
-    
-    const counter = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(counter);
-        } else {
-            element.textContent = Math.floor(current);
-        }
-    }, 16);
-}
-
-// Anima números quando chegam na viewport
-const counters = document.querySelectorAll('[data-counter]');
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const target = parseInt(entry.target.getAttribute('data-counter'));
-            animateCounter(entry.target, target);
-            counterObserver.unobserve(entry.target);
-        }
-    });
-});
-
-counters.forEach(counter => counterObserver.observe(counter));
-
-// ==========================================
-// RIPPLE EFFECT ON BUTTONS
-// ==========================================
-document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.classList.add('ripple');
-        
-        this.appendChild(ripple);
-        
-        setTimeout(() => ripple.remove(), 600);
-    });
-});
-
-// ==========================================
-// FORM VALIDATION (se tiver formulário)
-// ==========================================
-const form = document.querySelector('form');
-if (form) {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Aqui você pode adicionar validação do formulário
-        console.log('Formulário enviado!');
-    });
-}
-
-// ==========================================
-// LAZY LOADING IMAGES
-// ==========================================
-if ('IntersectionObserver' in window) {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
-            }
-        });
-    });
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// ==========================================
-// THEME TOGGLE (Modo Escuro)
-// ==========================================
+// Tema claro/escuro
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
 const icon = themeToggle ? themeToggle.querySelector('i') : null;
@@ -429,9 +314,6 @@ function loadPortfolioData() {
         })
         .catch(error => {
             console.warn('Não foi possível carregar data.json:', error);
-            if (window.location.protocol === 'file:') {
-                showJsonLoadWarning();
-            }
         });
 }
 
@@ -455,7 +337,7 @@ if (savedTheme === 'dark') {
     }
 }
 
-// navbar element already referenced earlier; toggle scrolled class on scroll
+// Borda na navbar depois de rolar
 window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
         navbar.classList.add("scrolled");
@@ -483,20 +365,3 @@ if (themeToggle) {
         }
     });
 }
-
-// ==========================================
-// CONSOLE MESSAGE
-// ==========================================
-console.log('%c✨ Bem-vindo ao portfólio de Deivid Figueiredo!', 'color: #6366f1; font-size: 16px; font-weight: bold;');
-console.log('%cCuriosidade? Veja o código-fonte!', 'color: #ec4899; font-size: 12px;');
-
-// ==========================================
-// INICIALIZAÇÃO
-// ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Portfólio carregado com sucesso!');
-    
-    // Adiciona classe de carregamento ao body
-    document.body.classList.add('loaded');
-    loadPortfolioData();
-});

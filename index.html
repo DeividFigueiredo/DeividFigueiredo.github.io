@@ -3,22 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deivid Figueiredo | Desenvolvedor Full Stack</title>
+    <title>Deivid Figueiredo · dev full stack</title>
     <!-- Favicon: inline SVG (fallback para favicon.ico) -->
-    <link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23007acc" width="100" height="100"/><text x="50" y="58" font-size="56" font-family="Poppins,Arial" fill="white" text-anchor="middle">D</text></svg>'>
+    <link rel="icon" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%2322d3a6" width="100" height="100"/><text x="50" y="58" font-size="56" font-family="monospace" fill="white" text-anchor="middle">D</text></svg>'>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Background animado -->
-    <div class="background-animation">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
 
     <!-- Navegação -->
     <nav class="navbar">
@@ -53,40 +47,40 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="gradient-text">Olá, sou Deivid!</span>
-                    </h1>
-                    <p class="hero-subtitle">Full Stack Developer com foco em experiência, arquitetura e entregas de valor</p>
+                    <p class="hero-kicker">Deivid Figueiredo</p>
+                    <h1 class="hero-title">Desenvolvedor full stack.</h1>
                     <p class="hero-description">
-                        Trabalho com desenvolvimento de interfaces, sistemas e integrações que ajudam negócios a entregarem melhor experiência ao usuário e mais eficiência operacional. Meu objetivo é transformar ideias em produtos digitais bem estruturados, funcionais e prontos para crescer.
+                        Faço app, API e site. Hoje meu dia a dia é React e React Native no front, Python e NestJS no back, e bastante integração com sistema dos outros. Abaixo tem o que eu já coloquei no ar.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#contato" class="btn btn-primary">
-                            <span>Vamos Conversar</span>
-                            <i class="fas fa-arrow-right"></i>
+                        <a href="#projetos" class="btn btn-primary">
+                            <span>Ver projetos</span>
+                            <i class="fas fa-arrow-down"></i>
                         </a>
-                        <a href="#projetos" class="btn btn-secondary">
-                            <span>Ver Meus Trabalhos</span>
-                            <i class="fas fa-code"></i>
+                        <a href="#contato" class="btn btn-secondary">
+                            <span>Falar comigo</span>
                         </a>
                     </div>
                 </div>
                 <div class="hero-image" aria-hidden="true">
-                    <div class="hero-visual" id="heroVisual"></div>
+                    <pre class="hero-terminal"><span class="t-prompt">~/daezz $</span> ls projetos/
+cuide+/      <span class="t-dim"># app de saúde (RN)</span>
+everflow/    <span class="t-dim"># gateway Python/Flask</span>
+savanna/     <span class="t-dim"># base NestJS + Prisma</span>
+guandu/      <span class="t-dim"># site + catálogo</span>
+inova/       <span class="t-dim"># site Next.js</span>
+<span class="t-prompt">~/daezz $</span> <span class="t-cursor">_</span></pre>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Skills -->
-        
 
     <!-- Projetos -->
     <section id="projetos" class="projetos">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Projetos</h2>
-                <p class="section-subtitle">Soluções criadas com foco em produto, clareza e entrega.</p>
+                <p class="section-subtitle">Os que eu posso mostrar. Alguns são de cliente e o código é fechado.</p>
             </div>
             <div class="projects-carousel">
                 <div id="projectsContent" class="projetos-grid"></div>
@@ -104,8 +98,8 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Stack & Competências</h2>
-                <p class="section-subtitle">Tecnologias que uso para transformar ideia em produto.</p>
+                <h2 class="section-title">Stack</h2>
+                <p class="section-subtitle">O que eu uso no dia a dia.</p>
             </div>
             <div id="skillsContent" class="skills-wrapper"></div>
         </div>
@@ -116,23 +110,20 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Sobre Mim</h2>
-                <p class="section-subtitle">Código, estratégia e execução em um mesmo processo.</p>
+                <p class="section-subtitle">Resumindo.</p>
             </div>
             <div class="sobre-content">
                 <div class="sobre-card">
-                    <div class="sobre-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Produto</h3>
-                    <p>Entendo que tecnologia precisa gerar impacto real, então trabalho com foco em solução, clareza de fluxo e experiência útil para o usuário.</p>
+                    <h3>Onde eu mais trabalho</h3>
+                    <p>Integração. O Cuide+ e o EverFlow nasceram porque o app precisava conversar com o sistema da operadora sem expor nada, então fiz o gateway no meio com token, criptografia e log.</p>
                 </div>
                 <div class="sobre-card">
-                    <div class="sobre-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>Arquitetura</h3>
-                    <p>Planejo soluções pensando em escalabilidade, organização e integração entre front, back e dados desde a base do projeto.</p>
+                    <h3>Como eu começo projeto</h3>
+                    <p>Pelo Savanna. Montei uma base com login, multiempresa e permissões pra não refazer isso em todo sistema novo.</p>
                 </div>
                 <div class="sobre-card">
-                    <div class="sobre-icon"><i class="fas fa-handshake"></i></div>
-                    <h3>Execução</h3>
-                    <p>Valorizo comunicação clara, boa entrega e atenção aos detalhes. A melhor solução é aquela que funciona bem e sustenta crescimento.</p>
+                    <h3>Mobile e web</h3>
+                    <p>App eu faço em React Native com Expo. Site vai de HTML puro a React ou Next, depende do tamanho da coisa.</p>
                 </div>
             </div>
         </div>
@@ -143,8 +134,8 @@
     <section id="contato" class="contato">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Vamos Conversar!</h2>
-                <p class="section-subtitle">Escolha a melhor forma de entrar em contato</p>
+                <h2 class="section-title">Contato</h2>
+                <p class="section-subtitle">Email é o jeito mais rápido.</p>
             </div>
             <div class="contato-wrapper">
                 <div class="contato-cards">
@@ -153,21 +144,21 @@
                             <i class="fab fa-github"></i>
                         </div>
                         <h3>GitHub</h3>
-                        <p>Veja meus projetos e contribuições</p>
+                        <p>DeividFigueiredo</p>
                     </a>
                     <a href="https://linkedin.com/in/deivid-borges-52181b405/" target="_blank" class="contato-card">
                         <div class="contato-icon">
                             <i class="fab fa-linkedin"></i>
                         </div>
                         <h3>LinkedIn</h3>
-                        <p>Conecte-se comigo profissionalmente</p>
+                        <p>deivid-borges</p>
                     </a>
                     <a href="mailto:deividborges07@hotmail.com" class="contato-card">
                         <div class="contato-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <h3>Email</h3>
-                        <p>Envie uma mensagem direta</p>
+                        <p>deividborges07@hotmail.com</p>
                     </a>
                 </div>
             </div>
@@ -180,7 +171,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Deivid Figueiredo</h3>
-                    <p>Full Stack Developer criando produtos digitais com foco em experiência, performance e resultado.</p>
+                    <p>Desenvolvedor full stack.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Links Rápidos</h3>
@@ -205,7 +196,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Deivid Figueiredo. Desenvolvido com <i class="fas fa-heart"></i> e muito código.</p>
+                <p>&copy; 2026 Deivid Figueiredo</p>
             </div>
         </div>
     </footer>
