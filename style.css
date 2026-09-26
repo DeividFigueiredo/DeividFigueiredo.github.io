@@ -24,8 +24,10 @@
 }
 
 body.dark-mode {
-    --primary: #3fd39a;
-    --primary-dark: #2fb583;
+    --primary: #39ffa7;
+    --primary-dark: #22e08c;
+    --neon: 0 0 6px rgba(57, 255, 167, 0.55), 0 0 18px rgba(57, 255, 167, 0.25);
+    --neon-text: 0 0 8px rgba(57, 255, 167, 0.6), 0 0 22px rgba(57, 255, 167, 0.3);
     --on-primary: #0b1f17;
     --bg-primary: #111315;
     --bg-secondary: #1a1d20;
@@ -33,7 +35,7 @@ body.dark-mode {
     --text-primary: #ececea;
     --text-secondary: #a3a8ad;
     --border: #2b2f33;
-    --accent-soft: rgba(63, 211, 154, 0.12);
+    --accent-soft: rgba(57, 255, 167, 0.1);
 }
 
 html {
@@ -60,7 +62,6 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    /* removed background color and blur per user request */
     background: transparent;
     backdrop-filter: none;
     /* hide the bottom line when at top; reveal on scroll via .scrolled */
@@ -523,6 +524,11 @@ section:nth-child(even) {
     transition: var(--transition);
 }
 
+/* o hero fica no fundo da página pra navbar sumir nele antes de rolar */
+.hero.hero {
+    background: transparent;
+}
+
 /* Sobre */
 .sobre-content {
     display: grid;
@@ -968,7 +974,7 @@ body.dark-mode .projeto-card {
 }
 
 .tech-tag {
-    background: rgba(15, 143, 104, 0.1);
+    background: var(--accent-soft);
     color: var(--primary);
     padding: 4px 12px;
     border-radius: 20px;
@@ -1481,4 +1487,59 @@ body.dark-mode .contato-card {
     .footer-content {
         grid-template-columns: 1fr;
     }
+}
+
+/* Neon (só no tema escuro) */
+body.dark-mode .logo-icon,
+body.dark-mode .btn-primary {
+    box-shadow: var(--neon);
+}
+
+body.dark-mode .btn-primary:hover {
+    box-shadow: 0 0 10px rgba(57, 255, 167, 0.8), 0 0 32px rgba(57, 255, 167, 0.4);
+}
+
+body.dark-mode .btn-secondary:hover {
+    box-shadow: var(--neon);
+}
+
+body.dark-mode .logo-accent,
+body.dark-mode .hero-kicker,
+body.dark-mode .t-prompt,
+body.dark-mode .t-cursor,
+body.dark-mode .nav-links a:hover {
+    text-shadow: var(--neon-text);
+}
+
+body.dark-mode .hero-terminal {
+    border-color: rgba(57, 255, 167, 0.45);
+    box-shadow: var(--neon), inset 0 0 24px rgba(57, 255, 167, 0.05);
+}
+
+body.dark-mode .category-title {
+    border-bottom-color: var(--primary);
+    box-shadow: 0 6px 10px -8px rgba(57, 255, 167, 0.7);
+}
+
+body.dark-mode .section-title {
+    text-shadow: 0 0 18px rgba(57, 255, 167, 0.18);
+}
+
+body.dark-mode .skill-card:hover,
+body.dark-mode .projeto-card:hover,
+body.dark-mode .sobre-card:hover,
+body.dark-mode .contato-card:hover {
+    border-color: var(--primary);
+    box-shadow: var(--neon);
+}
+
+body.dark-mode .skill-card:hover {
+    background-image: none;
+    border: 1px solid var(--primary);
+}
+
+body.dark-mode .skill-icon i,
+body.dark-mode .contato-icon i,
+body.dark-mode .sobre-icon i {
+    filter: drop-shadow(0 0 6px rgba(57, 255, 167, 0.6));
 }
