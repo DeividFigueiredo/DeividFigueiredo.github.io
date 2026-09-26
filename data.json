@@ -7,59 +7,113 @@
     {
       "title": "Frontend & UX",
       "items": [
-        {"name": "HTML5", "tier": "Avançado", "icon": "fab fa-html5"},
-        {"name": "CSS3", "tier": "Avançado", "icon": "fab fa-css3-alt"},
-        {"name": "JavaScript", "tier": "Avançado", "icon": "fab fa-js"},
-        {"name": "TypeScript", "tier": "Intermediário", "icon": "fas fa-code"},
-        {"name": "React", "tier": "Intermediário", "icon": "fab fa-react"},
-        {"name": "Figma", "tier": "Intermediário", "icon": "fas fa-pencil-ruler"}
+        {
+          "name": "HTML5",
+          "tier": "Avançado",
+          "icon": "fab fa-html5"
+        },
+        {
+          "name": "CSS3",
+          "tier": "Avançado",
+          "icon": "fab fa-css3-alt"
+        },
+        {
+          "name": "JavaScript",
+          "tier": "Avançado",
+          "icon": "fab fa-js"
+        },
+        {
+          "name": "TypeScript",
+          "tier": "Intermediário",
+          "icon": "fas fa-code"
+        },
+        {
+          "name": "React",
+          "tier": "Intermediário",
+          "icon": "fab fa-react"
+        },
+        {
+          "name": "Figma",
+          "tier": "Intermediário",
+          "icon": "fas fa-pencil-ruler"
+        }
       ]
     },
     {
       "title": "Backend & Arquitetura",
       "items": [
-        {"name": "Python", "tier": "Avançado", "icon": "fab fa-python"},
-        {"name": "Node.js", "tier": "Intermediário", "icon": "fab fa-node-js"},
-        {"name": "NestJS", "tier": "Intermediário", "icon": "fas fa-server"},
-        {"name": "APIs", "tier": "Avançado", "icon": "fas fa-network-wired"},
-        {"name": "PostgreSQL", "tier": "Intermediário", "icon": "fas fa-database"},
-        {"name": "Git", "tier": "Avançado", "icon": "fab fa-git-alt"}
+        {
+          "name": "Python",
+          "tier": "Avançado",
+          "icon": "fab fa-python"
+        },
+        {
+          "name": "Node.js",
+          "tier": "Intermediário",
+          "icon": "fab fa-node-js"
+        },
+        {
+          "name": "NestJS",
+          "tier": "Intermediário",
+          "icon": "fas fa-server"
+        },
+        {
+          "name": "APIs",
+          "tier": "Avançado",
+          "icon": "fas fa-network-wired"
+        },
+        {
+          "name": "PostgreSQL",
+          "tier": "Intermediário",
+          "icon": "fas fa-database"
+        },
+        {
+          "name": "Git",
+          "tier": "Avançado",
+          "icon": "fab fa-git-alt"
+        }
       ]
     }
   ],
   "projects": [
     {
-      "title": "Guandu Marmores",
-      "description": "Site institucional de uma empresa de mármores e granitos de alto padão. O projeto envolveu a criação de um design moderno e responsivo, além da implementação de funcionalidades avançadas.",
+      "title": "Guandu Mármores",
+      "description": "Site e catálogo de uma marmoraria: vitrine das pedras com fotos, filtros por tipo e integração com o backend de produtos.",
       "icon": "assets/img/Guandu-site.png",
-      "logo": "assets/img/Guandu-site.png", 
+      "logo": "assets/img/Guandu-site.png",
       "url": "https://guandumarmores.com.br",
       "page": "guandu-marmores.html",
       "showWebsiteButton": true,
-      "showProjectButton": false,
-      "tech": ["HTML", "CSS", "JavaScript"]
+      "showProjectButton": true,
+      "tech": [
+        "React",
+        "Vite",
+        "Node.js",
+        "Medusa",
+        "Docker"
+      ]
     },
     {
       "title": "Cuide+",
-      "description": "Aplicativo de saúde para clientes de operadoras, com acesso ao plano, carteirinha, autorizações, boletos, telemedicina e notificações em tempo real.",
+      "description": "App para beneficiários de operadora de saúde: carteirinha, autorizações, boletos, telemedicina e push.",
       "icon": "assets/img/cuidemais.png",
-      "logo": "assets/img/cuidemais.png", 
+      "logo": "assets/img/cuidemais.png",
       "url": "nda.html",
       "websiteButtonLabel": "Ver Repositório",
       "page": "cuidemais.html",
       "showWebsiteButton": true,
       "showProjectButton": true,
-      "tech": ["React Native", "Expo", "JavaScript", "API", "Mobile"],
-      "screenshots": [
-        {
-          "title": "Tela do Painel do Cliente",
-          "image": "https://via.placeholder.com/900x600/6366f1/ffffff?text=Cuide%2B"
-        }
+      "tech": [
+        "React Native",
+        "Expo",
+        "JavaScript",
+        "API",
+        "Mobile"
       ]
     },
     {
       "title": "EverFlow",
-      "description": "Gateway de integração em Python para conectar apps a sistemas externos com segurança, criptografia e rotas específicas de autenticação e dados.",
+      "description": "Gateway em Python/Flask entre o app Cuide+ e os sistemas da operadora: autenticação por token, payload criptografado e logs.",
       "icon": "assets/img/everflow-cover.png",
       "logo": "assets/img/everflow-cover.png",
       "url": "nda.html",
@@ -67,44 +121,41 @@
       "page": "everflow.html",
       "showWebsiteButton": true,
       "showProjectButton": true,
-      "tech": ["Python", "Flask", "API", "Criptografia"],
-      "screenshots": [
-        {
-          "title": "Visão Geral da Integração de Dados",
-          "image": "https://via.placeholder.com/900x600/1f2937/ffffff?text=EverFlow"
-        }
+      "tech": [
+        "Python",
+        "Flask",
+        "API",
+        "Criptografia"
       ]
     },
     {
       "title": "Savanna",
-      "description": "Base multiprojeto para sistemas web com gestão comercial, autenticação, multiempresa, dashboard e módulos de CRM prontos para uso.",
+      "description": "Base que eu uso pra começar sistemas web: API NestJS + Prisma, login com refresh token, multiempresa e um CRM de exemplo.",
       "icon": "assets/img/savanna-logo-b.png",
       "logo": "assets/img/savanna-logo-b.png",
       "url": "https://github.com/DeividFigueiredo/Savanna",
       "page": "savanna.html",
       "websiteButtonLabel": "Ver Repositório",
-      "tech": ["TypeScript", "React", "NestJS", "Prisma", "PostgreSQL"],
-      "screenshots": [
-        {
-          "title": "Base de gestão comercial",
-          "image": "https://via.placeholder.com/900x600/1f2937/ffffff?text=Savanna"
-        }
+      "tech": [
+        "TypeScript",
+        "React",
+        "NestJS",
+        "Prisma",
+        "PostgreSQL"
       ]
     },
     {
       "title": "Inova - Inteligência em Gestão Pública",
-      "description": "Site institucional para uma empresa focada em inteligência aplicada à gestão pública, com narrativa, áreas de atuação e contato para conversas comerciais e institucionais.",
+      "description": "Site institucional da Inova, empresa de inteligência em gestão pública.",
       "icon": "assets/img/inova-logo.png",
       "logo": "assets/img/inova-logo.png",
       "url": "https://inovaigp.com.br",
       "page": "inova.html",
       "showWebsiteButton": true,
-      "tech": ["Next.js", "TypeScript", "Design System", "Landing Page", "Marketing Digital"],
-      "screenshots": [
-        {
-          "title": "Landing page institucional",
-          "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
-        }
+      "tech": [
+        "Next.js",
+        "TypeScript",
+        "React"
       ]
     }
   ]
